@@ -6,14 +6,14 @@ float pos;    //value of the line coordinate
 
 void setup() {
   Serial.begin(9600);
-  pinMode(7,INPUT_PULLUP);
-  pinMode(8,INPUT_PULLUP);
+  pinMode(7,INPUT_PULLUP);  //LOW State save     /*Switch pin pullups*/  
+  pinMode(8,INPUT_PULLUP);  //HIGH State save
 }
 
 void loop() {
 
-  ledCheck();
-  cordCalc();
+  ledCheck();               //check led array status
+  cordCalc();               //calculate line coordinate
 
   if(millis()%100==0){
     // ledShow();

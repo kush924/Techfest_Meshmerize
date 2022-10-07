@@ -3,6 +3,7 @@
 
 float led[5],led_Low[5],led_High[5]={1024,1024,1024,1024,1024};   //arrays for LED values
 float pos;    //value of the line coordinate
+unsigned long print_time=0;
 
 void setup() {
   Serial.begin(9600);
@@ -15,9 +16,10 @@ void loop() {
   ledCheck();               //check led array status
   cordCalc();               //calculate line coordinate
 
-  if(millis()%100==0){
-    // ledShow();
-    Serial.println(pos);
+  if(millis()-print_time>=400){
+    ledShow();
+    // Serial.println(pos);
+    print_time=millis();
   }
 
 }

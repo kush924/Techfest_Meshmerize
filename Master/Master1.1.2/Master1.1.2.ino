@@ -4,7 +4,7 @@
 // 60 5 13
 float Kp = 3;              //change the value by trial-and-error (ex: 0.07).                //PID
 float Ki = 0;              //change the value by trial-and-error (ex: 0.0008).
-float Kd = 9;              //change the value by trial-and-error (ex: 0.6).
+float Kd = 0;              //change the value by trial-and-error (ex: 0.6).
 int P,I,D;
 int lastError = 0;
 int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 50 ,base_motor_speed_diff = 0;
@@ -29,7 +29,7 @@ int led_path_left = 0, led_path_right = 0, led_path_front = 0, led_path_center =
 
 int a1 = 4, a2 = 5, apwm = 6, b1 = 7, b2 = 8, bpwm = 9;     //motor pins
 
-int del_point = 100, del_end = 100, del_left = 100, del_right = 100 , del_straight = 100 , del_back = 100 ;      //delays
+int del_point = 60, del_end = 100, del_left = 100, del_right = 100 , del_straight = 100 , del_back = 100 ;      //delays
 
 void setup() {
   Serial.begin(9600);
@@ -57,5 +57,6 @@ void loop() {
   pathTrigCheck();
   }
   // ledDebugg();
+// ledTriggerShow();
   // pidDebugg();
 }

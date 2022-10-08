@@ -21,6 +21,11 @@ void ledMap() {     //Maps led values from 0 to 100 according to the LOW and HIG
     led[i] = ((100 * (led[i] - led_low[i])) / (led_high[i] - led_low[i]));
   }
 }
+void ledPathMap() {     //Maps led values from 0 to 100 according to the LOW and HIGH error
+  for (int i = 0; i <= 2; i++) {
+    led_path[i] = ((100 * (led_path[i] - led_path_low[i])) / (led_path_high[i] - led_path_low[i]));
+  }
+}
 void ledSaveLow() {  //save LOW State for Background
   led_low[0] = led[0];
   led_low[1] = led[1];
@@ -41,5 +46,7 @@ void ledSaveHigh() {  //save HIGH State for Strip
 }
 
 void cordCalc() {     //Calculates cordinate of strip left to right ie (0 to 4)
-  pos = (float)(-32 * led[0] + -16 * led[1] + -0 * led[2] + 16 * led[3] + 32 * led[4]) / (float)(led[0] + led[1] + led[2] + led[3] + led[4]);
+
+  pos = (float)(-32 * led[0] + -16 * led[1] + -0 * led[2] + 16 * led[3] + 32 * led[4]) / (float)(led[0] + led[1] + led[2] + led[3] + led[4]);  
+  // pos = (float)(-1000*(100-led_path[0])+ -32 * led[0] + -16 * led[1] + -0 * led[2] + 16 * led[3] + 32 * led[4]+1000*(100-led_path[2])) / (float)((100-led_path[0])+led[0] + led[1] + led[2] + led[3] + led[4]+(100-led_path[2]));  
 }

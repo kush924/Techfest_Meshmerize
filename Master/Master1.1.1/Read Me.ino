@@ -25,3 +25,9 @@ Nano Pinout
 
 */
 
+/*
+      Left
+      Straight 
+      
+
+*/

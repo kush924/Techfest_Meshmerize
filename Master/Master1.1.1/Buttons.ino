@@ -9,7 +9,13 @@ void buttonCheck(){
   // button_oldtime = millis();   //
 
     if (digitalRead(calibration_pin) == LOW) {
-        //  calibrate();
+      if(calibrate_done == 0){
+        calibrate();
+        calibrate_done = 1;
+      }
+      else {
+      calibrate_done = 2;
+      }
         button_oldtime = millis();
     }
     if (digitalRead(algo_pin) == LOW) {
@@ -17,7 +23,7 @@ void buttonCheck(){
         button_oldtime = millis();
     }
     if (digitalRead(final_run_pin) == LOW) {
-        final_run_var = ! final_run_var;
+        final_run_var = 1; point = 0;
         button_oldtime = millis();
     }
   }
@@ -37,13 +43,12 @@ void calibrate(){
    cal_led_path_low[c] = 1024;  
   }
   motorSpin();
-  for(int b=0;b<=1000;b++){
+  for(int b=0;b<=1200;b++){
   ledCal();
-  }
-  for(int b=0;b<=1000;b++){
   ledPathCal();
   }
   motorStop();
+  ledOffsetAssign();
 }
 void ledCal(){
   for (int i = 7, j = 0; i >= 3; i--){
@@ -60,12 +65,52 @@ void ledCal(){
 void ledPathCal(){
   for (int i = 2, j = 0; i >= 0; i--){
     float temp = analogRead(i);
-    if(temp > cal_led_high[j]){
-    cal_led_high[j] = temp;
+    if(temp > cal_led_path_high[j]){
+    cal_led_path_high[j] = temp;
     }
-    if(temp < cal_led_low[j]){
-    cal_led_low[j] = temp;
+    if(temp < cal_led_path_low[j]){
+    cal_led_path_low[j] = temp;
     }
     j++;
+  }
+}
+void ledOffsetAssign(){
+  for(int i;i<=4;i++){
+    led_high[i]=cal_led_high[i];
+  }
+  for(int i;i<=4;i++){
+    led_low[i]=cal_led_low[i];
+  }
+  for(int i;i<=2;i++){
+    led_path_high[i]=cal_led_path_high[i];
+  }
+  for(int i;i<=2;i++){
+    led_path_low[i]=cal_led_path_low[i];
+  }
+}
+void ledPathTrigCheck(){
+  if(led_path[0]<=20){
+  led_path_left=1;
+  }
+  else {
+  led_path_left=0;
+  }
+  if(led_path[1]<=20){
+  led_path_front=1;
+  }
+  else {
+  led_path_front=0;
+  }
+  if(led_path[2]<=20){
+  led_path_right=1;
+  }
+  else {
+  led_path_right=0;
+  }
+  if(led[2]>=65){
+  led_path_center=1;
+  }
+  else {
+  led_path_center=0;
   }
 }

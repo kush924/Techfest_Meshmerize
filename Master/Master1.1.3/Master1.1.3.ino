@@ -18,8 +18,8 @@ int calibration_var = 0, calibrate_done = 1, algo_toggle_var = 0, final_run_var=
 
 float led[5],led_low[5]={0,0,0,0,0},led_high[5]={1024,1024,1024,1024,1024};   //arrays for LED values
 float pos;    //value of the line coordinate
-float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};
-float cal_led_high[5],cal_led_low[5]; float cal_led_path_high[3],cal_led_path_low[3];
+float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};  //arrays for LED_path values
+float cal_led_high[5],cal_led_low[5]; float cal_led_path_high[3],cal_led_path_low[3]; //Led calibration values
 int led_path_cutoff = 20;
 
 char path; int point = 0;         //algo array store

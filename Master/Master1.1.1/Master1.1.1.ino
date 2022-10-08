@@ -1,11 +1,11 @@
-float KpAg = 3;
-float KdAg = 15;
-float Kp = 0;              //change the value by trial-and-error (ex: 0.07).                //PID
+// float KpAg = 3;
+// float KdAg = 15;
+float Kp = 7;              //change the value by trial-and-error (ex: 0.07).                //PID
 float Ki = 0;              //change the value by trial-and-error (ex: 0.0008).
-float Kd = 0;              //change the value by trial-and-error (ex: 0.6).
+float Kd = 20;              //change the value by trial-and-error (ex: 0.6).
 int P,I,D;
 int lastError = 0;
-int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 255 ,base_motor_speed_diff = 0;
+int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 80 ,base_motor_speed_diff = 0;
 int base_motor_speed = motor_set_speed;
 
 unsigned long print_oldtime=0 ,print_time=200;   //time calculations
@@ -18,6 +18,7 @@ float led[5],led_low[5]={0,0,0,0,0},led_high[5]={1024,1024,1024,1024,1024};   //
 float pos;    //value of the line coordinate
 float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};
 float cal_led_high[5],cal_led_low[5]; float cal_led_path_high[3],cal_led_path_low[3];
+int led_path_cutoff = 20;
 
 char path; int point = 0;         //algo array store
 char way[100] = {'N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N'};
@@ -47,12 +48,12 @@ void loop() {
   ledPathMap();
   cordCalc();               //calculate line coordinate
   ledPathTrigCheck();
-  ledPathMotorSpeedCheck();
+  // ledPathMotorSpeedCheck();
   PID_control();
   if (calibrate_done == 2) {
   motorRunPid();
   }
   pathTrigCheck();
-  // ledDebugg();
-  pidDebugg();
+  ledDebugg();
+  // pidDebugg();
 }

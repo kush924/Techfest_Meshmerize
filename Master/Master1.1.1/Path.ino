@@ -3,6 +3,7 @@ void pathTrigCheck(){
 if(final_run_var == 0){
 
   if(led_path_left==1||led_path_right==1||led_path_center==0){
+    digitalWrite(13, HIGH);
       delay(del_point);
     if(algo_toggle_var == 0 )
       {
@@ -28,6 +29,7 @@ if (final_run_var == 1){    //point is made 0 at final_run_var=1;
     if(way[point]=='B'){
       back();point++;
     }
+    checkEndLeft();
 
 }
 }

@@ -74,17 +74,17 @@ void motorRunPid(){
   digitalWrite(b2, LOW);
   analogWrite(bpwm, left_motor_speed );
 }
-void ledPathMotorSpeedCheck(){
-  if(led_path[0]<=20){
-    base_motor_speed = 0;
-  }
-  else {
-    base_motor_speed = motor_set_speed;
-  }
-  if(led_path[2]<=20){
-  base_motor_speed = 0;
-  }
-  else {
-  base_motor_speed = motor_set_speed;
-  }
-}
+// void ledPathMotorSpeedCheck(){
+//   if(led_path[0]<=led_path_cutoff){
+//     base_motor_speed = 0;
+//   }
+//   else {
+//     base_motor_speed = motor_set_speed;
+//   }
+//   if(led_path[2]<=led_path_cutoff){
+//   base_motor_speed = 0;
+//   }
+//   else {
+//   base_motor_speed = motor_set_speed;
+//   }
+// }

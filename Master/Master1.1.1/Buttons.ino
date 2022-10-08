@@ -23,7 +23,7 @@ void buttonCheck(){
         button_oldtime = millis();
     }
     if (digitalRead(final_run_pin) == LOW) {
-        final_run_var = 1; point = 0;
+        final_run_var = 1; point = 0; digitalWrite(13,LOW);
         button_oldtime = millis();
     }
   }
@@ -89,19 +89,19 @@ void ledOffsetAssign(){
   }
 }
 void ledPathTrigCheck(){
-  if(led_path[0]<=20){
+  if(led_path[0]<=led_path_cutoff){
   led_path_left=1;
   }
   else {
   led_path_left=0;
   }
-  if(led_path[1]<=20){
+  if(led_path[1]<=led_path_cutoff){
   led_path_front=1;
   }
   else {
   led_path_front=0;
   }
-  if(led_path[2]<=20){
+  if(led_path[2]<=led_path_cutoff){
   led_path_right=1;
   }
   else {

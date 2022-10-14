@@ -58,7 +58,7 @@ void final(){
   
     if(way[point]=='L'){
       left();point++;
-    }
+    }x
     if(way[point]=='R'){
       right();point++;
     }

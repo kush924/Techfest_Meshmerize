@@ -17,11 +17,17 @@ Nano Pinout
       D7    B motor 1
       D8    B motor 2
       D9    B motor pwm
-      D10   Button Blue
-      D11   Button Red
-      D12   Button yellow
+      D10   Button Blue     Calibrate
+      D11   Button Red      Algo toggle
+      D12   Button yellow   Final run button
       D13   Light Indicator
 
 
 */
 
+/*
+      Left
+      Straight 
+      
+
+*/

@@ -7,7 +7,7 @@ float Ki = 0;              //change the value by trial-and-error (ex: 0.0008).
 float Kd = 0;              //change the value by trial-and-error (ex: 0.6).
 int P,I,D;                 
 int lastError = 0;
-int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 52 ,base_motor_speed_diff = 0;
+int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 42 ,base_motor_speed_diff = 0;
 int base_motor_speed = motor_set_speed;
 
 unsigned long print_oldtime=0 ,print_time=200;   //time calculations
@@ -56,7 +56,8 @@ void loop() {
   motorRunPid();                                        //
   pathTrigCheck();      //verify
   }
-  // ledDebugg();
+  
+  ledDebugg();
 // ledTriggerShow();
   // pidDebugg();
 }

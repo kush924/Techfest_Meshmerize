@@ -1,6 +1,5 @@
 void indicatorInit(){
-  pinMode(13, OUTPUT);
-  digitalWrite(13,LOW);
+  pinMode(led_pin, OUTPUT);
 }
 void ledCheck() {  //Checks current LEDs values 
   for (int i = 7, j = 0; i >= 3; i--){

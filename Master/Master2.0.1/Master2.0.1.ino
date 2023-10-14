@@ -22,7 +22,7 @@ float led[5],led_low[5]={0,0,0,0,0},led_high[5]={1024,1024,1024,1024,1024};   //
 float pos;    //value of the line coordinate
 float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};  //arrays for LED_path values
 float cal_led_high[5],cal_led_low[5]; float cal_led_path_high[3],cal_led_path_low[3]; //Led calibration values
-int led_path_cutoff = 20; led_cutoff = 50;
+int led_path_cutoff = 20, led_cutoff = 50;
 
 int led_path_left = 0, led_path_right = 0, led_path_front = 0, led_path_center = 0; //turn variables
 
@@ -32,7 +32,7 @@ char way[100] = {'N','N','N','N','N','N','N','N','N','N','N','N','N','N','N','N'
 int a1 = 4, a2 = 5, apwm = 6, b1 = 7, b2 = 8, bpwm = 9;     //motor pins
 
 int del_point = 60, del_end = 100, del_left = 100, del_right = 100 , del_straight = 100 , del_back = 100 ;      //delays
-int button_press_brake_delay 1000;
+int button_press_brake_delay = 1000;
 int turn_time = 200;
 int calibrate_points = 1200;
 

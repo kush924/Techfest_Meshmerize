@@ -7,8 +7,11 @@ if(final_run_var == 0){
     }
   else{temp_led_state = 1;}
   if(led_path_left==1||led_path_right==1||(led_path_left==0&&led_path_front==0&&led_path_center==0&&led_path_right==0&&temp_led_state==0)){ //to cover all path trigger cases
+      if(led_path_left==0&&led_path_front==0&&led_path_center==0&&led_path_right==0&&temp_led_state==0){
+        digitalWrite(13,HIGH);
+      }
       delay(del_point);
-      //ledPathTrigCheck(); //add this function
+      // ledPathTrigCheck(); //add this function
     if(algo_toggle_var == 0 )
       {
         LSRB();

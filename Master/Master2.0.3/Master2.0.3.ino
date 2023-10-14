@@ -1,15 +1,15 @@
 // float KpAg = 3;
 // float KdAg = 15;
 // 80 7 20
-// 60 5 13
+// 60 5 3
 
 float Kp = 3;              //change the value by trial-and-error (ex: 0.07).                //PID
 float Ki = 0;              //change the value by trial-and-error (ex: 0.0008).
 float Kd = 10;              //change the value by trial-and-error (ex: 0.6).
 int P,I,D;                 
 int lastError = 0;
-
-int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 65 ,base_motor_speed_diff = 0;
+int led_pin = 13;
+int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 75 ,base_motor_speed_diff = 0;
 int base_motor_speed = motor_set_speed;
 
 unsigned long print_oldtime=0 ,print_time=200;   //serial print time delay_steps
@@ -35,7 +35,7 @@ int del_point = 0, del_end = 150, del_left = 100, del_right = 100 , del_straight
 int button_press_brake_delay = 1000;
 int turn_time = 200;
 int calibrate_points = 5000;
-int turn_speed = 62;
+int turn_speed = 75;
 
 void setup() {
   Serial.begin(9600);

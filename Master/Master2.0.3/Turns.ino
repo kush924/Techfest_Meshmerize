@@ -84,17 +84,17 @@ void checkEndLeft(){
   // ledPathTrigCheck();
   if(led_path_left == 1 && led_path_front == 1 && led_path_right == 1 ){    //check end
     path = 'E';
-    digitalWrite(13,HIGH);
+    digitalWrite(led_pin,HIGH);
       // while (final_run_var==0) {
         brake();
       while(final_run_var == 0){
           buttonCheck();
       }
-        digitalWrite(13, LOW);
+        digitalWrite(led_pin, LOW);
     }
   else{
       path = 'C';left();way[point] = 'L'; point++;
-      digitalWrite(13, LOW);
+      digitalWrite(led_pin, LOW);
   }
 }
 void checkEndRight(){
@@ -102,17 +102,17 @@ void checkEndRight(){
   // ledPathTrigCheck();
   if(led_path_left == 1 && led_path_front == 1 && led_path_right == 1 ){    //check end
     path = 'E';
-      digitalWrite(13,HIGH);
+      digitalWrite(led_pin,HIGH);
       // while (final_run_var==0) {
         brake();
       while(final_run_var == 0){
           buttonCheck();
       }
-        digitalWrite(13, LOW);
+        digitalWrite(led_pin, LOW);
     }
   else{
       path = 'C';right();way[point] = 'R'; point++;
-      digitalWrite(13, LOW);
+      digitalWrite(led_pin, LOW);
   }
 }
 void brake(){

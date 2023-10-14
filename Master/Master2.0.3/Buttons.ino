@@ -27,7 +27,7 @@ void buttonCheck(){
     }
     if (digitalRead(final_run_pin) == LOW) {
       Serial.println("yellow");brake();delay(button_press_brake_delay);
-        final_run_var = 1; point = 0; digitalWrite(13,LOW);
+        final_run_var = 1; point = 0; digitalWrite(led_pin,LOW);
         button_oldtime = millis();
     }
   }

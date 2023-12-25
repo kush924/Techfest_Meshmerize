@@ -6,7 +6,6 @@ void ledCheck() {  //Checks current LEDs values
     led[j] = analogRead(i);
     j++;
   }
-  
 }
 void ledPathCheck() {  //Checks current path_LEDs values
   for (int i = 2, j = 0; i >= 0; i--){

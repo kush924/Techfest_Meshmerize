@@ -19,8 +19,10 @@ int calibration_pin = 10, algo_pin = 11, final_run_pin = 12;                    
 int calibrate_done = 0, algo_toggle_var = 0, final_run_var=0;    //Button toggle state variable
 
 float led[5],led_low[5]={0,0,0,0,0},led_high[5]={1024,1024,1024,1024,1024};   //arrays for LED values
+float led_dist[5][];
 float pos;    //value of the line coordinate
 float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};  //arrays for LED_path values
+
 float cal_led_high[5],cal_led_low[5]; float cal_led_path_high[3],cal_led_path_low[3]; //Led calibration values
 int led_path_cutoff = 20, led_cutoff = 50, led_turn_cutoff =70;
 

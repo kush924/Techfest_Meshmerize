@@ -3,6 +3,12 @@
 // 80 7 20
 // 60 5 3
 
+#define intpin 2                                                    //INTERRUPT
+volatile unsigned long del_step_count = 0;
+
+#define led_step_count_limit 20
+volatile unsigned long led_step_count =0;
+
 float Kp = 3;              //change the value by trial-and-error (ex: 0.07).                //PID
 float Ki = 0;              //change the value by trial-and-error (ex: 0.0008).
 float Kd = 10;              //change the value by trial-and-error (ex: 0.6).
@@ -18,8 +24,10 @@ unsigned long button_oldtime=0 ,button_time=100;  //  button debounce
 int calibration_pin = 10, algo_pin = 11, final_run_pin = 12;                    //button pins
 int calibrate_done = 0, algo_toggle_var = 0, final_run_var=0;    //Button toggle state variable
 
+#define led_arr_len 20
+float led_line_logic[7][led_arr_len];
+
 float led[5],led_low[5]={0,0,0,0,0},led_high[5]={1024,1024,1024,1024,1024};   //arrays for LED values
-float led_dist[5][];
 float pos;    //value of the line coordinate
 float led_path[3],led_path_low[3]={0,0,0},led_path_high[3]={1024,1024,1024};  //arrays for LED_path values
 
@@ -44,16 +52,17 @@ void setup() {
   buttonInit();
   motorInit();
   indicatorInit();
+  attachInterrupt(digitalPinToInterrupt(intpin),ledLineISR,RISING);
 }
 
 void loop() {
 
   buttonCheck();            //check if button is pressed
-  ledCheck();               //check led array status    //
-  ledMap();                                             //
-  ledPathCheck();           //check path led status     //
-  ledPathMap();                
-  cordCalc();               //calculate line coordinate, assigns to pos //
+  ledUpdateAll();
+
+if(led_step_count>=led_step_count_limit){
+  ledUpdateLineLogic();
+}
   
   ledPathTrigCheck();       //led detect white and updates led_path_left,right,front,center
   PID_control();            //updates base_motor_speed_diff according to pos
@@ -64,4 +73,8 @@ void loop() {
   }
   
   ledDebugg();
+}
+
+void ledLineISR(){
+  led_step_count++;
 }

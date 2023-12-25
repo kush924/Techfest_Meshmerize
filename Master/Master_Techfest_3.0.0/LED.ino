@@ -30,7 +30,7 @@ void ledSaveLow() {  //save LOW State for Background
   led_low[2] = led[2];
   led_low[3] = led[3];
   led_low[4] = led[4];
-  Serial.println("Low State Save");
+  // Serial.println("Low State Save");
   delay(1000);
 }
 void ledSaveHigh() {  //save HIGH State for Strip
@@ -39,7 +39,7 @@ void ledSaveHigh() {  //save HIGH State for Strip
   led_high[2] = led[2];
   led_high[3] = led[3];
   led_high[4] = led[4];
-  Serial.println("HIGH State Save");
+  // Serial.println("HIGH State Save");
   delay(1000);
 }
 

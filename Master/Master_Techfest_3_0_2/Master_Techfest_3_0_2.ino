@@ -75,9 +75,15 @@ if(led_step_count >= led_step_count_limit){
   PID_control();            //updates base_motor_speed_diff according to pos
 
   if (calibrate_done == 2) {
+    if(final_run_var == 0){
   motorRunPid();            // runs line follower(straight line) according to the base_motor_speed_diff
-  // pathTrigCheck();          
-  
+  trigCheckDist();
+  // pathTrigCheck();      
+    } 
+    if(final_run_var == 1){
+      motorRunPid();
+      trigCheckDistFinal();
+    }   
   }
   
   // ledDebugg();

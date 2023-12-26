@@ -54,3 +54,4 @@ void ledsUpdate(){
   cordCalc();               //calculate line coordinate
   ledPathTrigCheck();
 }
+

@@ -68,6 +68,15 @@ void moveBack(){
   digitalWrite(b2, LOW);
   analogWrite(bpwm, turn_speed);
 }
+void moveRevDistDelay(int del){
+  digitalWrite(a1, LOW);
+  digitalWrite(a2, HIGH);
+  analogWrite(apwm, turn_speed);
+  digitalWrite(b1, LOW);
+  digitalWrite(b2, HIGH);
+  analogWrite(bpwm, turn_speed);
+  dist_delay(del);
+}
 void straight(){
   digitalWrite(a1, HIGH);
   digitalWrite(a2, LOW);

@@ -38,18 +38,18 @@ void motorStop(){
 void motorSpin(){
   digitalWrite(a1, LOW);    //clockwise
   digitalWrite(a2, HIGH);
-  analogWrite(apwm, 50) ;
+  analogWrite(apwm, motor_set_speed) ;
   digitalWrite(b1, HIGH);
   digitalWrite(b2, LOW);
-  analogWrite(bpwm, 50);
+  analogWrite(bpwm, motor_set_speed);
 }
 void motorSpinCounterclock(){
   digitalWrite(a1, HIGH);    //counter clockwise
   digitalWrite(a2, LOW);
-  analogWrite(apwm, 50);
+  analogWrite(apwm, motor_set_speed);
   digitalWrite(b1, LOW);
   digitalWrite(b2, HIGH);
-  analogWrite(bpwm, 50);
+  analogWrite(bpwm, motor_set_speed);
 }
 void motorRunPid(){
   right_motor_speed = base_motor_speed - base_motor_speed_diff;   //calculate speed of left and right

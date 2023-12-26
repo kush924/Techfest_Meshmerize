@@ -55,8 +55,8 @@ void motorRunPid(){
   right_motor_speed = base_motor_speed - base_motor_speed_diff;   //calculate speed of left and right
   left_motor_speed = base_motor_speed + base_motor_speed_diff;
 
-  if (left_motor_speed >= 255) {left_motor_speed = 255;}          //upper bounds of left and right speed
-  if (right_motor_speed >= 255) {right_motor_speed = 255;}
+  if (left_motor_speed >= max_motor_speed) {left_motor_speed = max_motor_speed;}          //upper bounds of left and right speed
+  if (right_motor_speed >= max_motor_speed) {right_motor_speed = max_motor_speed;}
   if (left_motor_speed <= 0) {left_motor_speed = 0;}
   if (right_motor_speed <= 0) {right_motor_speed = 0;}
 

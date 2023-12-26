@@ -10,5 +10,5 @@ void dist_delay(int step){
 }
 
 void isr_delay(){
-  del_step_count ++;
+  del_step_count++;
 }

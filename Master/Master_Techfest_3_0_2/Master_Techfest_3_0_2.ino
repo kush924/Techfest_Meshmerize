@@ -3,12 +3,14 @@
 // 80 7 20
 // 60 5 3
 
-#define intpin 2                                                    //INTERRUPT
+#define intpin 3                                                    //INTERRUPT
 volatile unsigned long del_step_count = 0;
 
-#define led_step_count_limit 15
+#define led_step_count_limit 20
 volatile unsigned long led_step_count =0;
 int FL = 0,FC = 0,FR = 0,ML = 0,MC = 0,MR = 0,RL = 0,RC = 0,RR = 0;
+
+#define max_motor_speed 70
 
 unsigned long time_now = 0;
 float Kp = 3;              //change the value by trial-and-error (ex: 0.07).                //PID
@@ -17,7 +19,7 @@ float Kd = 10;              //change the value by trial-and-error (ex: 0.6).
 int P,I,D;                 
 int lastError = 0;
 int led_pin = 13;
-int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 55 ,base_motor_speed_diff = 0;
+int left_motor_speed = 0, right_motor_speed = 0,motor_set_speed = 65 ,base_motor_speed_diff = 0;
 int base_motor_speed = motor_set_speed;
 
 unsigned long print_oldtime=0 ,print_time=200;   //serial print time delay_steps
@@ -26,8 +28,8 @@ unsigned long button_oldtime=0 ,button_time=100;  //  button debounce
 int calibration_pin = 10, algo_pin = 11, final_run_pin = 12;                    //button pins
 int calibrate_done = 0, algo_toggle_var = 0, final_run_var=0;    //Button toggle state variable
 
-#define led_arr_trig_f 0
-#define led_arr_trig_lr 5
+#define led_arr_trig_f 2
+#define led_arr_trig_lr 4
 #define led_arr_len 20
 bool led_line_logic[7][led_arr_len] = {0};
 

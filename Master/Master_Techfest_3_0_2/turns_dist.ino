@@ -1,6 +1,8 @@
 void trigCheckDist(){
     // Serial.println("Check");
-  if(led_line_logic[0][led_arr_trig_lr] || led_line_logic[6][led_arr_trig_lr]){
+  if(     led_line_logic[0][led_arr_trig_lr] && (led_line_logic[0][led_arr_trig_lr +1] || led_line_logic[0][led_arr_trig_lr -1]) 
+      ||  led_line_logic[6][led_arr_trig_lr] && (led_line_logic[6][led_arr_trig_lr +1] || led_line_logic[6][led_arr_trig_lr -1]) 
+      ){
   //trigger
   motorStop();
   moveRevDistDelay(led_step_count_limit*(led_arr_trig_lr+1));
@@ -9,7 +11,7 @@ void trigCheckDist(){
   reset_led_line();
   }
   // if(time_now>=1500){
-  if((led_line_logic[3][0]==0) && (led_line_logic[3][2]==0) && (led_line_logic[3][3]==0)){
+  if( (led_line_logic[3][0]==0) && (led_line_logic[3][2]==0) && (led_line_logic[3][3]==0)  ){
     //trigger
   triggerBack();
   }
@@ -71,6 +73,9 @@ void triggerLeftRight(){
       if(led_line_logic[0][0] == 1 ||led_line_logic[6][0] == 1 ){
           digitalWrite(led_pin,HIGH);
         brake();
+        while(final_run_var == 0){
+          buttonCheck();
+      }
         }
       else{
         left();     way[point] = 'L'; point++;

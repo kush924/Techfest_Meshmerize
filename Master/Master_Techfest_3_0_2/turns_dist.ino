@@ -11,8 +11,9 @@ void trigCheckDist(){
   reset_led_line();
   }
   // if(time_now>=1500){
-  if( (led_line_logic[3][0]==0) && (led_line_logic[3][2]==0) && (led_line_logic[3][3]==0)  ){
+  else if( (led_line_logic[3][0]==0) && (led_line_logic[3][2]==0) && (led_line_logic[3][6]==0)  ){
     //trigger
+  moveRevDistDelay(led_step_count_limit*(led_arr_trig_lr+1));
   triggerBack();
   }
   // }
